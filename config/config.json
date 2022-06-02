@@ -3,21 +3,21 @@
     "username": "postgres",
     "password": "postgres",
     "database": "postgres",
-    "host": "127.0.0.1",
+    "host": "pkhhfjbkjcjyjy:d4a65cb046c99cd0af587ae",
     "dialect": "postgres"
   },
   "test": {
     "username": "postgres",
     "password": "postgres",
     "database": "postgres",
-    "host": "127.0.0.1",
+    "host": "pkhhfjbkjcjyjy:d4a65cb046c99cd0af587ae",
     "dialect": "postgres"
   },
   "production": {
     "username": "postgres",
     "password": "postgres",
     "database": "postgres",
-    "host": "127.0.0.1",
+    "host": "pkhhfjbkjcjyjy:d4a65cb046c99cd0af587ae",
     "dialect": "postgres"
   }
 }
