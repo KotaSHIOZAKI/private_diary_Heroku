@@ -178,10 +178,8 @@ router.get('/diary-create/', function(req, res, next) {
 });
 router.post('/diary-create/', upload.fields(fileOptions), function(req, res, next) {
   //作成
-  console.log(req.files.photo1[0].filename);
-
   var body = req.body;
-  const user_id = body;
+  const user_id = body['user_id'];
   const title = body['title'];
   const content = body['content'];
   const photo1 = req.files.photo1 != undefined ? req.files.photo1[0].filename : '';
