@@ -197,7 +197,7 @@ router.post('/diary-create/', upload.fields(fileOptions), function(req, res, nex
     showMsg("success", "日記を作成しました。");
     res.redirect('/diary-list');
   }).catch(err => {
-    showMsg("danger", err);
+    showMsg("danger", "日記の作成に失敗しました。");
     res.redirect('/diary-list');
   });
 });
