@@ -1,0 +1,85 @@
+<% function title() { %>
+    日記一覧
+<% } %>
+
+<% function head() { %>
+    <link rel="stylesheet" href="/stylesheets/clean-blog.min.css">
+<% } %>
+
+<% function header() { %>
+
+<% } %>
+
+<% function contents() { %>
+    <div class="container">
+        <div class="my-div-style w-100">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="clearfix">
+                        <a class="btn btn-primary float-right" href="/diary-create">新規作成</a>
+                    </div>
+                    
+                    <% if (diary_list.length > 0) { %>
+                        <% for (var i in diary_list) { %>
+                            <% var diary = diary_list[i]; %>
+                            <div class="post-preview">
+                                <a href="/diary-detail/<%= diary.id %>">
+                                    <h2 class="post-title"><%= diary.title %></h2>
+                                    <h3 class="post-subtitle"><%= (diary.content.length > 20) ? diary.content.substring(0, 20) + '...' : diary.content %></h3>
+                                </a>
+                                <p class="post-meta"><%= diary.createdAt %></p>
+                            </div>
+                            <hr>
+                        <% } %>
+                    <% } else { %>
+                        <p>日記がありません。</p>
+                    <% } %>
+
+                    <ul class="pagination">
+                        <!-- 前ページへのリンク -->
+                        <% if (Number(page) - 1 > 0) { %>
+                        <li class="page-item">
+                            <a href="?page=<%= (Number(page) - 1) %>" class="page-link">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <% } %>
+    
+                        <!-- ページ数表示 -->
+                        <% for (var i = 1; i <= pageLimit; i++) { %>
+                            <% if (i == page) { %>
+                                <li class="page-item active">
+                                    <a href="#" class="page-link"><%= i %></a>
+                                </li>
+                            <% } else { %>
+                                <li class="page-item">
+                                    <a href="?page=<%= i %>" class="page-link"><%= i %></a>
+                                </li>
+                            <% } %>
+                        <% } %>
+    
+                        <!-- 次ページへのリンク -->
+                        <% if (Number(page) + 1 <= pageLimit) { %>
+                        <li class="page-item">
+                            <a href="?page=<%= (Number(page) + 1) %>" class="page-link">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+<% } %>
+
+
+<% if (part === "title") { %>
+    <% title(); %>
+<% } else if (part === "head") { %>
+    <% head(); %>
+<% } else if (part === "header") { %>
+    <% header(); %>
+<% } else if (part === "contents") { %>
+    <% contents(); %>
+<% } %>

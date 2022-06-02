@@ -1,0 +1,73 @@
+<% function title() { %>
+    日記編集
+<% } %>
+
+<% function head() { %>
+    <link rel="stylesheet" href="/stylesheets/clean-blog.min.css">
+<% } %>
+
+<% function header() { %>
+
+<% } %>
+
+<% function contents() { %>
+    <div class="container">
+        <div class="my-div-style w-100">
+            <div class="row">
+                <form action="/diary-update/<%= object.id %>/" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="id" id="id" value="<%= object.id %>">
+                    <input type="hidden" name="user_id" id="user_id" value="<%= auth.id %>">
+                    
+                    <table class="table">
+                        <tr>
+                            <th>タイトル</th>
+                            <td>
+                                <input type="text" name="title" id="title" maxlength="40" class="form-control" value="<%= object.title %>">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>本文</th>
+                            <td>
+                                <textarea name="content" id="content" cols="30" rows="10" class="form-control"><%= object.content %></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>写真1</th>
+                            <td>
+                                <input type="file" name="photo1" id="photo1" class="form-control" value="<%= object.photo1 %>">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>写真2</th>
+                            <td>
+                                <input type="file" name="photo2" id="photo2" class="form-control" value="<%= object.photo2 %>">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>写真3</th>
+                            <td>
+                                <input type="file" name="photo3" id="photo3" class="form-control" value="<%= object.photo3 %>">
+                            </td>
+                        </tr>
+                    </table>
+    
+                    <button class="btn btn-primary" type="submit">更新</button>
+                    <a href="/diary-detail/<%= object.id %>" class="btn btn-secondary ml-2">
+                        キャンセル
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+<% } %>
+
+
+<% if (part === "title") { %>
+    <% title(); %>
+<% } else if (part === "head") { %>
+    <% head(); %>
+<% } else if (part === "header") { %>
+    <% header(); %>
+<% } else if (part === "contents") { %>
+    <% contents(); %>
+<% } %>

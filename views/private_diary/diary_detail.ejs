@@ -1,0 +1,108 @@
+<% function title() { %>
+    日記詳細
+<% } %>
+
+<% function head() { %>
+    
+<% } %>
+
+<% function header() { %>
+
+<% } %>
+
+<% function contents() { %>
+    <div class="container">
+        <div class="my-div-style w-100">
+            <!-- タイトル -->
+            <div class="row">
+                <div class="col-3">
+                    <strong>タイトル</strong>
+                </div>
+                <div class="col-9">
+                    <%= object.title %>
+                </div>
+            </div>
+    
+            <hr>
+            
+            <!-- 本文 -->
+            <div class="row">
+                <div class="col-3">
+                    <strong>本文</strong>
+                </div>
+                <div class="col-9">
+                    <%= object.content.replace(/\n/g, "<br />") %>
+                </div>
+            </div>
+    
+            <hr>
+    
+            <!-- 写真3枚 -->
+            <div class="row">
+                <div class="col-3">
+                    <strong>写真</strong>
+                </div>
+                <div class="col-3">
+                    <% if (object.photo1 && object.photo1 != '') { %>
+                    <img src="../images/<%= object.photo1 %>" width="200" height="200">
+                    <% } %>
+                </div>
+                <div class="col-3">
+                    <% if (object.photo2 && object.photo2 != '') { %>
+                    <img src="../images/<%= object.photo2 %>" width="200" height="200">
+                    <% } %>
+                </div>
+                <div class="col-3">
+                    <% if (object.photo3 && object.photo3 != '') { %>
+                    <img src="../images/<%= object.photo3 %>" width="200" height="200">
+                    <% } %>
+                </div>
+            </div>
+    
+            <hr>
+    
+            <!-- 作成日時 -->
+            <div class="row">
+                <div class="col-3">
+                    <strong>作成日時</strong>
+                </div>
+                <div class="col-9">
+                    <%= object.createdAt %>
+                </div>
+            </div>
+    
+            <hr>
+    
+            <!-- 更新日時 -->
+            <div class="row">
+                <div class="col-3">
+                    <strong>更新日時</strong>
+                </div>
+                <div class="col-9">
+                    <%= object.updatedAt %>
+                </div>
+            </div>
+    
+            <!-- 編集ボタン -->
+            <a href="/diary-update/<%= object.id %>" class="btn btn-success mt-5 mb-3">
+                編集
+            </a>
+            
+            <!-- 削除ボタン -->
+            <a href="/diary-delete/<%= object.id %>" class="btn btn-danger mt-5 ml-2 mb-3">
+                削除
+            </a>
+        </div>
+    </div>
+<% } %>
+
+
+<% if (part === "title") { %>
+    <% title(); %>
+<% } else if (part === "head") { %>
+    <% head(); %>
+<% } else if (part === "header") { %>
+    <% header(); %>
+<% } else if (part === "contents") { %>
+    <% contents(); %>
+<% } %>

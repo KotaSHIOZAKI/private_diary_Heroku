@@ -1,0 +1,128 @@
+<% function title() { %>
+    お問い合わせ
+<% } %>
+
+<% function head() { %>
+
+<% } %>
+
+<% function header() { %>
+
+<% } %>
+
+<% function contents() { %>
+    <div class="container">
+        <div class="row">
+            <div class="my-div-style">
+                <form method="post" enctype="multipart/form-data">
+                    <table border="1">
+                        <% if (name != undefined) { %>
+                            <tr>
+                                <th>名前</th>
+                                <td><%= name %></td>
+                            </tr>
+                        <% } %>
+                        <% if (mail != undefined) { %>
+                            <tr>
+                                <th>メールアドレス</th>
+                                <td><%= mail %></td>
+                            </tr>
+                        <% } %>
+                        <% if (m_title != undefined) { %>
+                            <tr>
+                                <th>タイトル</th>
+                                <td><%= m_title %></td>
+                            </tr>
+                        <% } %>
+                        <% if (message != undefined) { %>
+                            <tr>
+                                <th>メッセージ</th>
+                                <td><%= message %></td>
+                            </tr>
+                        <% } %>
+                    </table>
+                    <br>
+                    
+    
+                    <div class="form-group row">
+                        <label for="name" class="col-sm-4 col-form-label">
+                            <!-- ラベル -->
+                            <strong>お名前</strong>
+                        </label>
+                        <div class="col-sm-8">
+                            <!-- フィールド -->
+                            <input type="text" name="name" id="name" maxlength="30" class="form-control col-9" placeholder="お名前をここに入力してください。">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="email" class="col-sm-4 col-form-label">
+                            <!-- ラベル -->
+                            <strong>メールアドレス</strong>
+                        </label>
+                        <div class="col-sm-8">
+                            <!-- フィールド -->
+                            <input type="email" name="mail" id="mail" class="form-control col-11" placeholder="メールアドレスをここに入力してください。">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="title" class="col-sm-4 col-form-label">
+                            <!-- ラベル -->
+                            <strong>タイトル</strong>
+                        </label>
+                        <div class="col-sm-8">
+                            <!-- フィールド -->
+                            <input type="text" name="title" id="title" maxlength="30" class="form-control col-11" placeholder="タイトルをここに入力してください。">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="message" class="col-sm-4 col-form-label">
+                            <!-- ラベル -->
+                            <strong>メッセージ</strong>
+                        </label>
+                        <div class="col-sm-8">
+                            <!-- フィールド -->
+                            <textarea name="message" id="message" cols="30" rows="10" class="form-control col-12" placeholder="メッセージをここに入力してください。"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="image" class="col-sm-4 col-form-label">
+                            <!-- ラベル -->
+                            <strong>画像ファイル1</strong>
+                        </label>
+                        <div class="col-sm-8">
+                            <!-- フィールド -->
+                            <input type="file" name="file1" id="file1">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="image" class="col-sm-4 col-form-label">
+                            <!-- ラベル -->
+                            <strong>画像ファイル2</strong>
+                        </label>
+                        <div class="col-sm-8">
+                            <!-- フィールド -->
+                            <input type="file" name="file2" id="file2">
+                        </div>
+                    </div>
+    
+                    <!-- 送信ボタン -->
+                    <div class="offset-sm-4 col-sm-8">
+                        <button class="btn btn-primary" type="submit">送信</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br>
+<% } %>
+
+
+<% if (part === "title") { %>
+    <% title(); %>
+<% } else if (part === "head") { %>
+    <% head(); %>
+<% } else if (part === "header") { %>
+    <% header(); %>
+<% } else if (part === "contents") { %>
+    <% contents(); %>
+<% } %>

@@ -1,0 +1,39 @@
+<% function title() { %>
+    日記削除
+<% } %>
+
+<% function head() { %>
+    <link rel="stylesheet" href="/stylesheets/clean-blog.min.css">
+<% } %>
+
+<% function header() { %>
+
+<% } %>
+
+<% function contents() { %>
+    <div class="container">
+        <div class="my-div-style w-100">
+            <div class="row">
+                <form action="/diary-delete/<%= object.id %>" method="POST">
+                    <input type="hidden" name="id" id="id" value="<%= object.id %>">
+                    <p>本当に削除しますか？</p>
+                    <button class="btn btn-primary mt-5" type="submit">削除</button>
+                    <a href="/diary-detail/<%= object.id %>" class="btn btn-secondary mt-5 ml-2">
+                        キャンセル
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+<% } %>
+
+
+<% if (part === "title") { %>
+    <% title(); %>
+<% } else if (part === "head") { %>
+    <% head(); %>
+<% } else if (part === "header") { %>
+    <% header(); %>
+<% } else if (part === "contents") { %>
+    <% contents(); %>
+<% } %>
